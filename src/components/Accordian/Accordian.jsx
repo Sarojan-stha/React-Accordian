@@ -4,19 +4,37 @@ import "./accordian.css";
 
 const Accordian = () => {
   const [selected, setSelected] = useState(null);
+  const [enabledMultiSelection, setEnabledMultiSelection] = useState(false);
+  const [multiple, setMultiple] = useState([]);
 
-  function handleClick(id) {
+  function handleSingleSelection(id) {
     setSelected(id === selected ? null : id);
+  }
+
+  function handleMultiSelection(id) {
+    let cpyMultiple = [...multiple];
   }
 
   return (
     <>
       <div className="wrapper">
+        <button
+          onClick={() => setEnabledMultiSelection(!enabledMultiSelection)}
+        >
+          Enable Multi Selection
+        </button>
         <div className="accordian">
           {data && data.length > 0 ? (
             data.map((dataItem) => (
               <div className="item">
-                <div onClick={() => handleClick(dataItem.id)} className="title">
+                <div
+                  onClick={() =>
+                    enabledMultiSelection
+                      ? () => handleMultiSelection()
+                      : () => handleSingleSelection(dataItem.id)
+                  }
+                  className="title"
+                >
                   <h3>{dataItem.question}</h3>
                   <span>+</span>
                 </div>
