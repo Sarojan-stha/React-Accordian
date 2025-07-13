@@ -20,7 +20,6 @@ const RandomColorGen = () => {
     for (let i = 0; i < 6; i++) {
       hexValue += values[randomColorUtility(10)];
     }
-    console.log(hexValue);
 
     setColorCode(hexValue);
   }
@@ -29,7 +28,6 @@ const RandomColorGen = () => {
     const r = randomColorUtility(256);
     const g = randomColorUtility(256);
     const b = randomColorUtility(256);
-    console.log(r, g, b);
 
     setColorCode(`rgb(${r},${g},${b})`);
   }
