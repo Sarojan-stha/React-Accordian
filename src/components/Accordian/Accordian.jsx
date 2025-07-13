@@ -13,6 +13,10 @@ const Accordian = () => {
 
   function handleMultiSelection(id) {
     let cpyMultiple = [...multiple];
+    const indexOfId = cpyMultiple.indexOf(id);
+
+    indexOfId === -1 ? cpyMultiple.push(id) : cpyMultiple.splice(indexOfId, 1);
+    setMultiple(cpyMultiple);
   }
 
   return (
@@ -30,19 +34,21 @@ const Accordian = () => {
                 <div
                   onClick={() =>
                     enabledMultiSelection
-                      ? () => handleMultiSelection()
-                      : () => handleSingleSelection(dataItem.id)
+                      ? handleMultiSelection(dataItem.id)
+                      : handleSingleSelection(dataItem.id)
                   }
                   className="title"
                 >
                   <h3>{dataItem.question}</h3>
                   <span>+</span>
                 </div>
-                {selected === dataItem.id ? (
-                  <div className="content">{dataItem.answer}</div>
-                ) : (
-                  ""
-                )}
+                {enabledMultiSelection
+                  ? multiple.indexOf(dataItem.id) !== -1 && (
+                      <div className="content">{dataItem.answer}</div>
+                    )
+                  : selected === dataItem.id && (
+                      <div className="content">{dataItem.answer}</div>
+                    )}
               </div>
             ))
           ) : (
