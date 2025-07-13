@@ -25,7 +25,9 @@ const Accordian = () => {
         <button
           onClick={() => setEnabledMultiSelection(!enabledMultiSelection)}
         >
-          Enable Multi Selection
+          {enabledMultiSelection
+            ? "Multi Selection Enabled"
+            : "Enable Multi Selection"}
         </button>
         <div className="accordian">
           {data && data.length > 0 ? (
