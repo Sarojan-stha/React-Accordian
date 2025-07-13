@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./RandomColorGen.css";
 
 const RandomColorGen = () => {
   const [colorType, setColorType] = useState("hex");
   const [colorCode, setColorCode] = useState("#D3D3D3");
+
+  useEffect(() => {
+    colorType === "hex" ? createHexCode() : createRgbCode();
+  }, [colorType]);
 
   function randomColorUtility(length) {
     const random = Math.floor(Math.random() * length);
@@ -16,22 +20,36 @@ const RandomColorGen = () => {
     for (let i = 0; i < 6; i++) {
       hexValue += values[randomColorUtility(10)];
     }
+    console.log(hexValue);
+
     setColorCode(hexValue);
   }
 
-  function createRgbCode() {}
+  function createRgbCode() {
+    const r = randomColorUtility(256);
+    const g = randomColorUtility(256);
+    const b = randomColorUtility(256);
+    console.log(r, g, b);
+
+    setColorCode(`rgb(${r},${g},${b})`);
+  }
 
   return (
     <div className="container" style={{ "--bg-color": colorCode }}>
-      <button onClick={() => setColorType("hex")}>create hex code</button>
-      <button onClick={() => setColorType("rgb")}>create rgb code</button>
-      <button
-        onClick={() =>
-          colorType === "hex" ? createHexCode() : createRgbCode()
-        }
-      >
-        Generate random color
-      </button>
+      <h1>Random Color Generator</h1>
+      <div className="button-container">
+        <button onClick={() => setColorType("hex")}>Create Hex code</button>
+        <button onClick={() => setColorType("rgb")}>Create RGB code</button>
+        <button
+          onClick={() =>
+            colorType === "hex" ? createHexCode() : createRgbCode()
+          }
+        >
+          Generate Random Color
+        </button>
+      </div>
+
+      <div className="color-code">{`${colorType} : ${colorCode}`}</div>
     </div>
   );
 };
