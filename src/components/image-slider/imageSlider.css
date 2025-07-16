@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.image-container {
+  margin: 10px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 10px;
+}
+.show-image {
+  width: 500px;
+  height: auto;
+  border-radius: 5px;
+}
+.hide-image {
+  display: none;
+}
+.left-arrow,
+.right-arrow {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.wrapper {
+  text-align: center;
+  background-color: burlywood;
+  padding: 10px;
+  border-radius: 5px;
+}
