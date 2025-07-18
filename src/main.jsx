@@ -1,10 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import LoadMoreData from "./components/load-more-data/loadMoreData";
+import TreeView from "./components/tree-view/TreeView";
+import menus from "./components/tree-view/data";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <LoadMoreData />
+    <TreeView menus={menus} />
   </StrictMode>
 );
