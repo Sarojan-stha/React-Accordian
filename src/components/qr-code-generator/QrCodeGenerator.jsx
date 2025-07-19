@@ -11,26 +11,26 @@ const QrCodeGenerator = () => {
     setInput("");
   };
 
-  console.log(input);
-  console.log(qrCode);
-
   return (
     <div className="container">
-      <input
-        onChange={(e) => setInput(e.target.value)}
-        type="text"
-        name="qr-code"
-        value={input}
-        placeholder="Enter your value here"
-      />
-      <button
-        disabled={input && input.trim() !== "" ? false : true}
-        onClick={handleGenerateQRcode}
-      >
-        Generate
-      </button>
+      <div>
+        <input
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleGenerateQRcode()}
+          type="text"
+          name="qr-code"
+          value={input}
+          placeholder="Enter your value here"
+        />
+        <button
+          disabled={input && input.trim() !== "" ? false : true}
+          onClick={handleGenerateQRcode}
+        >
+          Generate
+        </button>
+      </div>
       <div className="qr-container">
-        <QRCode id="qr-code-id" value={qrCode} />
+        {qrCode && <QRCode id="qr-code-id" value={qrCode} />}
       </div>
     </div>
   );
