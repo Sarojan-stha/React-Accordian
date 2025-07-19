@@ -1,0 +1,11 @@
+.container {
+  border: 1px solid black;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.qr-container {
+  margin: 20px;
+}
