@@ -1,0 +1,24 @@
+.container {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding: 10px;
+}
+.wrapper {
+  display: flex;
+  gap: 10px;
+}
+.tab {
+  border: 1px solid black;
+  padding: 10px;
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.Tab-content {
+  font-size: 2rem;
+  color: grey;
+}
