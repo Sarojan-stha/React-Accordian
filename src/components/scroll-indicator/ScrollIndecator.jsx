@@ -4,7 +4,7 @@ import "./styles.css";
 const ScrollIndecator = () => {
   const [loading, setLoading] = useState(null);
   const [quotes, setQuotes] = useState([]);
-  const [scrollPercentage, setScrollPercentage] = useState(null);
+  const [scrollPercentage, setScrollPercentage] = useState(0);
 
   const url = "https://dummyjson.com/quotes";
 
@@ -42,11 +42,13 @@ const ScrollIndecator = () => {
     <div className="container">
       <div className="scroll-bar">
         <h1>scroll bar indicator</h1>
-        <div
-          className="scroll-indicator"
-          style={{ "--scroll-Percentage": scrollPercentage }}
-        >
-          scrollbar
+        <div className="bg-scroll">
+          <div
+            className="scroll-indicator"
+            style={{ "--scroll-Percentage": scrollPercentage }}
+          >
+            scrollbar
+          </div>
         </div>
       </div>
       <div className="quotes">
