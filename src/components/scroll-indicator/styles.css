@@ -1,0 +1,25 @@
+.scroll-bar {
+  z-index: 1;
+  top: 0;
+  width: 100%;
+  background-color: rgb(80, 199, 0);
+  color: white;
+  position: fixed;
+}
+.scroll-indicator {
+  background-color: green;
+  width: var(--scroll-Percentage);
+}
+.quotes {
+  margin-top: 100px;
+}
+.quote {
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 0 10px;
+  font-weight: bold;
+}
+.quote .author {
+  color: rgb(56, 55, 55);
+}
