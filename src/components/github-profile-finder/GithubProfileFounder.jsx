@@ -48,6 +48,7 @@ const GithubProfileFounder = () => {
 
   return (
     <div className="container">
+      <h1>GitHub Profile Finder</h1>
       <div className="input-section">
         <input
           onKeyDown={(e) => (e.key === "Enter" ? handleSearch() : null)}
@@ -60,6 +61,7 @@ const GithubProfileFounder = () => {
       </div>
 
       <div className="profile-wrapper">
+        {loading && <div>{"Loading..."}</div>}
         {error && <div>{error}</div>}
 
         {userData && (
@@ -70,10 +72,10 @@ const GithubProfileFounder = () => {
               alt={`${login} pic`}
             />
             <a href={html_url}>{login}</a>
-            <p>Repos={public_repos}</p>
-            <p>followers = {followers}</p>
-            <p>followings = {following}</p>
-            <p>Created at {created_at}</p>
+            <p>Public repositories : {public_repos}</p>
+            <p>Followers : {followers}</p>
+            <p>Followings : {following}</p>
+            <p>Account Created : {new Date(created_at).toLocaleDateString()}</p>
           </>
         )}
       </div>
