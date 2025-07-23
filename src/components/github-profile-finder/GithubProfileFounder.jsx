@@ -71,7 +71,11 @@ const GithubProfileFounder = () => {
               src={`https://avatars.githubusercontent.com/u/${id}?v=4`}
               alt={`${login} pic`}
             />
-            <a href={html_url}>{login}</a>
+            <h2>
+              <a href={html_url} rel="noopener noreferrer">
+                {login}
+              </a>
+            </h2>
             <p>Public repositories : {public_repos}</p>
             <p>Followers : {followers}</p>
             <p>Followings : {following}</p>
