@@ -40,12 +40,33 @@ const TicTacToe = () => {
     setXTurn(!xturn);
   }
 
-  useEffect(() => {
+  function getWinner(squares) {
     for (let i = 0; i < winningPattern.length; i++) {
       const [x, y, z] = winningPattern[i]; //destructuring each pattern
-      squares[x] && squares[x] === squares[y] && squares[y] === squares[z]
-        ? console.log("win")
-        : null;
+      if (
+        squares[x] &&
+        squares[x] === squares[y] &&
+        squares[x] === squares[z]
+      ) {
+        console.log("win");
+        return squares[x];
+      }
+    }
+    return null;
+  }
+
+  function handleRestart() {
+    setXTurn(true);
+    setSquares(Array(9).fill(""));
+  }
+
+  useEffect(() => {
+    if (!getWinner(squares) && squares.every((item) => item !== "")) {
+      setStatus(`This is a draw ! Please restart the game`);
+    } else if (getWinner(squares)) {
+      setStatus(`Winner is ${getWinner(squares)}. Please restart the game`);
+    } else {
+      setStatus(`Next player is ${xturn ? "X" : "O"}`);
     }
   }, [squares, xturn]);
 
@@ -67,6 +88,8 @@ const TicTacToe = () => {
         <Square value={squares[7]} onClick={() => handleClick(7)} />
         <Square value={squares[8]} onClick={() => handleClick(8)} />
       </div>
+      <h1>{status}</h1>
+      <button onClick={handleRestart}>Restart</button>
     </div>
   );
 };
