@@ -1,0 +1,18 @@
+.square {
+  height: 100px;
+  width: 100px;
+  border: 2px solid black;
+  padding: 0;
+  font-size: 40px;
+  float: left;
+  margin: -1px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  height: 100vh;
+}

@@ -72,7 +72,7 @@ const GithubProfileFounder = () => {
               alt={`${login} pic`}
             />
             <h2>
-              <a href={html_url} rel="noopener noreferrer">
+              <a href={html_url} target="_blank" rel="noopener noreferrer">
                 {login}
               </a>
             </h2>
