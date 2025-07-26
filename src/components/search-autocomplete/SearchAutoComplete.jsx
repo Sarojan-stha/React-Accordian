@@ -28,7 +28,9 @@ const SearchAutoComplete = () => {
   useEffect(() => {
     if (searchParam != "") {
       const filtered = usersData.filter((user) =>
-        user.firstName.toLowerCase().startsWith(searchParam.toLowerCase())
+        `${user.firstName} ${user.lastName}`
+          .toLowerCase()
+          .startsWith(searchParam.toLowerCase())
       );
       setFilteredUsers(filtered);
     }
