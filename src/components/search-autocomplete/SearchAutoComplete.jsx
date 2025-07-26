@@ -33,6 +33,8 @@ const SearchAutoComplete = () => {
           .startsWith(searchParam.toLowerCase())
       );
       setFilteredUsers(filtered);
+    } else {
+      setFilteredUsers([]);
     }
   }, [searchParam]);
 
