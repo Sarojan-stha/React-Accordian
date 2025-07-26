@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from "react";
+import "./styles.css";
 
 const SearchAutoComplete = () => {
   const [searchParam, setsearchParam] = useState("");
   const [usersData, setUsersData] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
   console.log(filteredUsers);
 
   const url = "https://dummyjson.com/users";
 
   async function fetchUsers() {
-    const response = await fetch(url);
-    const { users } = await response.json();
-    setUsersData(users);
+    try {
+      setLoading(true);
+      const response = await fetch(url);
+      const { users } = await response.json();
+      setUsersData(users);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
   }
   useEffect(() => {
     fetchUsers();
@@ -27,27 +35,29 @@ const SearchAutoComplete = () => {
   }, [searchParam]);
 
   return (
-    <div>
-      SearchAutoComplete
-      <input
-        value={searchParam}
-        onChange={(e) => {
-          setsearchParam(e.target.value);
-        }}
-        type="text"
-        placeholder="Search users"
-      />
-      <div>
-        {filteredUsers.length > 0 &&
-          filteredUsers.map((user) => {
-            return (
-              <div
-                onClick={() =>
-                  setsearchParam(`${user.firstName} ${user.lastName}`)
-                }
-              >{`${user.firstName} ${user.lastName}`}</div>
-            );
-          })}
+    <div className="container">
+      <h1>SearchAutoComplete</h1>
+      <div className="input-wrapper">
+        <input
+          value={searchParam}
+          onChange={(e) => {
+            setsearchParam(e.target.value);
+          }}
+          type="text"
+          placeholder="Search users"
+        />
+        <div className="suggestion">
+          {filteredUsers.length > 0 &&
+            filteredUsers.map((user) => {
+              return (
+                <li
+                  onClick={() =>
+                    setsearchParam(`${user.firstName} ${user.lastName}`)
+                  }
+                >{`${user.firstName} ${user.lastName}`}</li>
+              );
+            })}
+        </div>
       </div>
     </div>
   );
